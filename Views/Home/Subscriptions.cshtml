@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Subscriptions";
+}
+
+<section id="subscriptions" class="bg-secondary-subtle py-5">
+    <div class="container">
+        <div class="row text-center">
+
+            <!-- Plan 1: Gym Access Only -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="plan-card">
+                    <h3 class="mb-3">BASIC</h3>
+                    <p class="price">$19.99/month</p>
+                    <ul class="mb-4">
+                        <li>Unlimited access to gym equipment</li>
+                        <li>Locker room and shower access</li>
+                        <li>Free orientation session for new members</li>
+                    </ul>
+                    <p class="small">Perfect for individuals who want to focus solely on strength training and fitness using gym equipment.</p>
+                    <a class="btn btn-subscribe" asp-area="" asp-controller="Home" asp-action="Login">Subscribe Now</a>
+                </div>
+            </div>
+
+            <!-- Plan 2: Group Classes -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="plan-card">
+                    <h3 class="mb-3">STANDARD</h3>
+                    <p class="price">$39.99/month</p>
+                    <ul class="mb-4">
+                        <li>Includes everything in Basic Gym Access</li>
+                        <li>Access to all group classes:</li>
+                        <ul class="small">
+                            <li>Boxing</li>
+                            <li>Yoga</li>
+                            <li>Aerobics</li>
+                            <li>Cardio</li>
+                            <li>Body Work</li>
+                        </ul>
+                        <li>Priority booking for high-demand classes</li>
+                        <li>Locker room and shower access</li>
+                    </ul>
+                    <p class="small">Ideal for those who enjoy a dynamic workout experience with guidance from professional instructors.</p>
+                    <a class="btn btn-subscribe" asp-area="" asp-controller="Home" asp-action="Login">Subscribe Now</a>
+                </div>
+            </div>
+
+            <!-- Plan 3: All-Inclusive Premium Plan -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="plan-card">
+                    <h3 class="mb-3">PREMIUM</h3>
+                    <p class="price">$69.99/month</p>
+                    <ul class="mb-4">
+                        <li>Includes everything in Group Fitness Plan</li>
+                        <li>Access to advanced classes:</li>
+                        <ul class="small">
+                            <li>Crossfit</li>
+                            <li>Power Fitness</li>
+                        </ul>
+                        <li>Two 1-on-1 personal training sessions per month</li>
+                        <li>Access to exclusive VIP zones and premium facilities</li>
+                        <li>Complimentary nutrition and fitness consultation</li>
+                    </ul>
+                    <p class="small">Designed for individuals aiming for an elite fitness experience with personalized coaching and premium perks.</p>
+                    <a class="btn btn-subscribe" asp-area="" asp-controller="Home" asp-action="Login">Subscribe Now</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+

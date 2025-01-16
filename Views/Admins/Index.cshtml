@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Fitness_Center_Management.Models.Admin>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    @foreach (var admin in Model)
+    {
+        <div class="admin-profile">
+            <div class="admin-header">
+                <img src="@Url.Content("~/Images/" + admin.Picture)" alt="Admin Profile Picture" />
+                <h1>@admin.Firstname @admin.Lastname</h1>
+            </div>
+            <div class="admin-details">
+                <h5>Email</h5>
+                <p>@admin.Email</p>
+
+                <h5>Username</h5>
+                <p>@admin.Username</p>
+
+                <h5>Password</h5>
+                <p>@admin.Password</p>
+            </div>
+            <div class="admin-actions">
+                <a class="btn btn-primary btn-lg btn-edit" asp-action="Edit" asp-route-id="@admin.Adminid">Edit Profile</a>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .admin-profile {
+        margin: 0 auto;
+        padding: 20px 30px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        max-width: 900px;
+    }
+
+    .admin-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+        .admin-header img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 2px solid #4B49AC;
+        }
+
+        .admin-header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .admin-header p {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+
+    .admin-details {
+        margin: 20px 0;
+    }
+
+        .admin-details h5 {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 10px;
+        }
+
+        .admin-details p {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 10px;
+        }
+
+    .admin-actions {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+        .admin-actions .btn {
+            margin: 0 10px;
+        }
+
+</style>
+
+

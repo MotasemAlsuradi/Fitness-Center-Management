@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Fitness_Center_Management.Models.Trainer>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trainer List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" />
+    <style>
+        .trainer-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .trainer-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .trainer-card img {
+                border-radius: 10px;
+                object-fit: cover;
+                width: 100%;
+                height: 200px;
+            }
+
+            .trainer-card .card-body {
+                padding: 20px;
+            }
+
+            .trainer-card h5 {
+                color: #343a40;
+            }
+
+            .trainer-card p {
+                font-size: 1rem;
+                color: #6c757d;
+            }
+
+        .trainer-actions {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+            .trainer-actions .btn {
+                margin: 5px;
+            }
+
+        a {
+            text-decoration: none;
+        }
+
+        .search-container input {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="text-center">
+            <a  asp-action="Index" style="text-decoration: none;">
+                <h1 style="background-color: none;">Our Trainers</h1>
+            </a>
+        </div>
+
+        <div class="d-flex justify-content-between mb-4">
+            <!-- Create New Button -->
+            <a class="btn btn-primary" asp-action="Create">Create New Trainer</a>
+
+            <!-- Search Button and Input -->
+            <div class="search-container">
+                <form method="post" action="@Url.Action("Search", "Trainers")">
+                    <input type="text" name="searchQuery" class="form-control" placeholder="Search Trainers..." style="width: 300px; display: inline-block;" />
+                    <button type="submit" class="btn btn-secondary">Search</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card trainer-card">
+                        <img src="@Url.Content("~/Images/" + item.Picture)" alt="Trainer Image" />
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Firstname @item.Lastname</h5>
+                            <p class="card-text">Expertise: @item.Expertise</p>
+                            <p class="card-text">Username: @item.Username</p>
+                            <p class="card-text">Password: @item.Password</p>
+
+                            <p class="card-text">
+                                Social Links:
+                                <a href="@item.Socialfacebook" target="_blank">Facebook</a>,
+                                <a href="@item.Socialtwitter" target="_blank">Twitter</a>,
+                                <a href="@item.Sociallinkedin" target="_blank">LinkedIn</a>
+                            </p>
+                        </div>
+                        <div class="trainer-actions">
+                            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Trainersid">Edit</a>
+                            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Trainersid">Details</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Trainersid">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

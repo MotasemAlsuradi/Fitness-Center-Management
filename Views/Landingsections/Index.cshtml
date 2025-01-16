@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Fitness_Center_Management.Models.Landingsection>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml"; 
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Sections</title>
+    <style>
+        .landing-section {
+            width: 100%;
+            padding: 20px 15px;
+            background-color: #ffffff;
+            margin-bottom: 15px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .landing-section h2 {
+            font-size: 2rem;
+            color: #343a40;
+            margin-bottom: 15px;
+        }
+
+        .landing-section img {
+            border-radius: 8px;
+            width: 100%;
+            height: auto;
+            max-height: 350px;  /* Reduced image height */
+            object-fit: cover;
+        }
+
+        .landing-section .content {
+            margin-top: 15px;
+            
+        }
+
+        .landing-section .content p {
+            font-size: 1rem;
+            color: #495057;
+            margin-top: 10px;
+        }
+
+        .btn-custom {
+            background-color: #0056b3;
+            color: white;
+            border-radius: 5px;
+            padding: 8px 15px;
+            font-size: 1rem;
+            border: none;
+            margin-top: 15px;
+            width: auto;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-custom:hover {
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @@media (max-width: 768px) {
+            .landing-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .landing-section .content p {
+                font-size: 0.9rem;
+            }
+
+            .btn-custom {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h4 class="text-center mb-4">Landing Section</h4>
+
+        @foreach (var item in Model)
+        {
+            <div class="landing-section">
+                <img src="@Url.Content("~/Images/" + item.Mainimage)" alt="Main Image" />
+
+                <div class="content d-flex justify-content-between">
+                    <div>
+                        <p><strong class="fw-bolder text-black">First Line Text:</strong> @item.Firstwelcometext</p>
+                        <p><strong class="fw-bolder text-black">Second Line Text:</strong> @item.Secoundwelcometext</p>
+                    </div>
+                    <div>
+                        <p><strong class="fw-bolder text-black">First Button Text:</strong> @item.Firstbutton</p>
+                        <p><strong class="fw-bolder text-black">Second Button Text:</strong> @item.Secoundbutton</p>
+                    </div>
+
+                </div>
+
+                <div>
+                    <a href="@Url.Action("Edit", new { id = item.Landingsectionid })" class="btn-custom">Edit</a>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

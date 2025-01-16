@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Fitness_Center_Management.Models.Blogsection>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Section</title>
+    <style>
+        .container {
+            margin: 20px auto;
+            padding: 0 15px;
+            max-width: 1200px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            color: #343a40;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .btn-create {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn-create:hover {
+            background-color: #007bff;
+            text-decoration: none;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h4 {
+            color: #343a40;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .card p {
+            color: #495057;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        .btn-edit,
+        .btn-delete {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-edit {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background-color: #bd2130;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Blog Section</h2>
+            <a asp-action="Create" class="btn-create">Create New</a>
+        </div>
+
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <p><strong>Tip Title:</strong> @item.Tiptitle</p>
+                <p><strong>First Tip Text:</strong> @item.Firsttiptext</p>
+                <p><strong>Second Tip Text:</strong> @item.Secoundtiptext</p>
+                <div class="card-actions">
+                    <a asp-action="Edit" asp-route-id="@item.Blogsectionid" class="btn-edit">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Blogsectionid" class="btn-delete">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

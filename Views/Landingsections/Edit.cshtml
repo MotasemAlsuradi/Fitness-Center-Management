@@ -1,0 +1,145 @@
+﻿@model Fitness_Center_Management.Models.Landingsection
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Landing Section</title>
+    <style>
+        .edit-section {
+            width: 100%;
+            padding: 20px 15px;
+            background-color: #ffffff;
+            margin-bottom: 15px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .edit-section h2 {
+            font-size: 2rem;
+            color: #343a40;
+            margin-bottom: 15px;
+        }
+
+        .edit-section .form-group {
+            margin-bottom: 15px;
+        }
+
+        .edit-section input[type="text"], .edit-section input[type="file"] {
+            width: 100%;
+            padding: 8px 15px;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .edit-section label {
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .btn-custom {
+            background-color: #0056b3;
+            color: white;
+            border-radius: 5px;
+            padding: 8px 15px;
+            font-size: 1rem;
+            border: none;
+            margin-top: 15px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-custom:hover {
+            background-color: #007bff;
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @@media (max-width: 768px) {
+            .edit-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .edit-section input[type="text"], .edit-section input[type="file"] {
+                font-size: 0.9rem;
+            }
+
+            .btn-custom {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="edit-section">
+            <h2>Edit Landing Section</h2>
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Landingsectionid" />
+
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <!-- Image File Field -->
+                <div class="form-group">
+                    <label asp-for="ImageFile" class="control-label">Main Image</label>
+                    <input asp-for="ImageFile" class="form-control" type="file" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+
+                <!-- First Welcome Text Field -->
+                <div class="form-group">
+                    <label asp-for="Firstwelcometext" class="control-label">First Welcome Text</label>
+                    <input asp-for="Firstwelcometext" class="form-control" />
+                    <span asp-validation-for="Firstwelcometext" class="text-danger"></span>
+                </div>
+
+                <!-- Second Welcome Text Field -->
+                <div class="form-group">
+                    <label asp-for="Secoundwelcometext" class="control-label">Second Welcome Text</label>
+                    <input asp-for="Secoundwelcometext" class="form-control" />
+                    <span asp-validation-for="Secoundwelcometext" class="text-danger"></span>
+                </div>
+
+                <!-- First Button Text Field -->
+                <div class="form-group">
+                    <label asp-for="Firstbutton" class="control-label">First Button Text</label>
+                    <input asp-for="Firstbutton" class="form-control" />
+                    <span asp-validation-for="Firstbutton" class="text-danger"></span>
+                </div>
+
+                <!-- Second Button Text Field -->
+                <div class="form-group">
+                    <label asp-for="Secoundbutton" class="control-label">Second Button Text</label>
+                    <input asp-for="Secoundbutton" class="form-control" />
+                    <span asp-validation-for="Secoundbutton" class="text-danger"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <input type="submit" value="Save Changes" class="btn-custom" />
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <a href="@Url.Action("Index")" class="btn-custom">Back</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+﻿@model Fitness_Center_Management.Models.Maininformationoffitnesscenter
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Information</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-header h4 {
+            font-weight: bold;
+            color: #333;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-header">
+                <h4>Edit Fitness Center Information</h4>
+                <p>Update the details below and click "Save" to apply changes.</p>
+            </div>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <input type="hidden" asp-for="Maininformationoffitnesscenterid" />
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Firstabouttext" class="form-label">First About Text</label>
+                    <textarea asp-for="Firstabouttext" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Firstabouttext" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Secoundabouttext" class="form-label">Second About Text</label>
+                    <textarea asp-for="Secoundabouttext" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Secoundabouttext" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Thirdabouttext" class="form-label">Third About Text</label>
+                    <textarea asp-for="Thirdabouttext" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Thirdabouttext" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Openday" class="form-label">Open Day</label>
+                        <input asp-for="Openday" class="form-control" />
+                        <span asp-validation-for="Openday" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Closedday" class="form-label">Closed Day</label>
+                        <input asp-for="Closedday" class="form-control" />
+                        <span asp-validation-for="Closedday" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Worktime" class="form-label">Work Time</label>
+                    <input asp-for="Worktime" class="form-control" />
+                    <span asp-validation-for="Worktime" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Testamoinaltext" class="form-label">Testimonial Text</label>
+                    <textarea asp-for="Testamoinaltext" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Testamoinaltext" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Welcomelocationtext" class="form-label">Welcome Location Text</label>
+                    <textarea asp-for="Welcomelocationtext" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Welcomelocationtext" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Locationtext" class="form-label">Location Text</label>
+                    <textarea asp-for="Locationtext" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Locationtext" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Locationsource" class="form-label">Location Source</label>
+                    <input asp-for="Locationsource" class="form-control" />
+                    <span asp-validation-for="Locationsource" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Copyrighttext" class="form-label">Copyright Text</label>
+                    <input asp-for="Copyrighttext" class="form-control" />
+                    <span asp-validation-for="Copyrighttext" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Phone" class="form-label">Phone</label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+            <a class="back-link" asp-action="Index">Back</a>
+        </div>
+    </div>
+</body>
+</html>

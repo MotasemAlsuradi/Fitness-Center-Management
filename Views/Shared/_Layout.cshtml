@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Fitness_Center</title>
+
+    <!-- Favion-Image -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <!--
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Fitness_Center.styles.css" asp-append-version="true" />
+    -->
+    <!-- Font: Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS Frameworks (Bootstrap) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Font-Awesome Lib -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+<body>
+
+    <div id="spinner-overlay">
+        <div class="multi-circle-spinner">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+    </div>
+
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    FitSphere Fitness
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    Links <i class="fa-solid fa-caret-down"></i>
+                </button>
+
+                <div class="side-bar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                     aria-labelledby="offcanvasNavbarLabel">
+
+                    <div class="offcanvas-header text-white border-bottom">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                            FitSphere Fitness
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas"
+                                aria-label="Close">
+                        </button>
+                    </div>
+
+                    <div class="offcanvas-body d-flex flex-column flex-lg-row">
+                        <ul class="navbar-nav justify-content-lg-end justify-content-md-end justify-content-center align-items-center flex-grow-1 pe-5">
+                            <li class="nav-item">
+                                <a class="nav-link p-2 p-lg-3" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">
+                                    Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-2 p-lg-3" asp-area="" asp-controller="Home" asp-action="About">
+                                    About Us
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-2 p-lg-3" asp-area="" asp-controller="Home" asp-action="Subscriptions">
+                                    Subscriptions
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-2 p-lg-3" asp-area="" asp-controller="Home" asp-action="Schedules">
+                                    Schedules
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="d-flex justify-content-center align-items-center flex-lg-row">
+                            <a class="login" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Copyright Section -->
+                <div class="col-md-6 text-center mb-3 mb-md-0">
+                    <p class="mb-0 text-light">
+                        &copy; 2024 <strong>FitSphere Fitness Co.</strong>
+                    </p>
+                </div>
+                <!-- Contact Section -->
+                <div class="col-md-6 text-center">
+                    <p class="mb-1">
+                        <i class="fa-regular fa-envelope me-2"></i>
+                        <span class="text-light fw-medium">hello@FitSphere.com</span>
+                    </p>
+                    <p class="mb-0">
+                        <i class="fa fa-phone me-2"></i>
+                        <span class="text-light fw-medium">+962 797222917</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Frameworks (Bootstrap) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+    <!-- Font-Awesome Lib -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!--
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

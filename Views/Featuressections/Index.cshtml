@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Fitness_Center_Management.Models.Featuressection>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feature Section</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .feature-section {
+            padding: 50px 0;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+            .feature-section h2 {
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: #343a40;
+                margin-bottom: 40px;
+            }
+
+        .feature-card {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+            .feature-card h5 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+
+            .feature-card p {
+                font-size: 1rem;
+                color: #adb5bd;
+                margin-bottom: 20px;
+            }
+
+            .feature-card a {
+                display: inline-block;
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #0056b3;
+                color: #fff;
+                text-decoration: none;
+                font-weight: bold;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+
+                .feature-card a:hover {
+                    background-color: #0056b3;
+                }
+
+        .actions {
+            margin-top: 20px;
+        }
+
+            .actions a {
+                margin: 0 10px;
+                color: #fff;
+                background-color: #0056b3;
+                text-decoration: none;
+                font-weight: bold;
+                transition: color 0.3s ease;
+            }
+
+                .actions a:hover {
+                    color: #fff;
+                    background-color: #007bff;
+                }
+    </style>
+</head>
+<body>
+    <section class="feature-section">
+        <h4>Feature Section</h4>
+
+        <div class="container">
+            @foreach (var item in Model)
+            {
+                <div class="feature-card">
+                    <p>@item.Firstlefttext</p>
+                    <p>@item.Secoundlefttext</p>
+                    <p>@item.Thirdlefttext</p>
+                    <p>@item.Button</p>
+                    <div class="actions">
+                        <a asp-action="Edit" asp-route-id="@item.Featuressectionid">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Featuressectionid">Delete</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,100 @@
+﻿@model Fitness_Center_Management.Models.Subscriptionplan
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>Subscriptionplan</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Planid" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripelineone" class="control-label"></label>
+                <input asp-for="Descripelineone" class="form-control" />
+                <span asp-validation-for="Descripelineone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripelinetwo" class="control-label"></label>
+                <input asp-for="Descripelinetwo" class="form-control" />
+                <span asp-validation-for="Descripelinetwo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripelinethree" class="control-label"></label>
+                <input asp-for="Descripelinethree" class="form-control" />
+                <span asp-validation-for="Descripelinethree" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripelinefour" class="control-label"></label>
+                <input asp-for="Descripelinefour" class="form-control" />
+                <span asp-validation-for="Descripelinefour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripelinefive" class="control-label"></label>
+                <input asp-for="Descripelinefive" class="form-control" />
+                <span asp-validation-for="Descripelinefive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripelinesix" class="control-label"></label>
+                <input asp-for="Descripelinesix" class="form-control" />
+                <span asp-validation-for="Descripelinesix" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripelineseven" class="control-label"></label>
+                <input asp-for="Descripelineseven" class="form-control" />
+                <span asp-validation-for="Descripelineseven" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripelineeghit" class="control-label"></label>
+                <input asp-for="Descripelineeghit" class="form-control" />
+                <span asp-validation-for="Descripelineeghit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripelinenine" class="control-label"></label>
+                <input asp-for="Descripelinenine" class="form-control" />
+                <span asp-validation-for="Descripelinenine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Advicetext" class="control-label"></label>
+                <input asp-for="Advicetext" class="form-control" />
+                <span asp-validation-for="Advicetext" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Buttontext" class="control-label"></label>
+                <input asp-for="Buttontext" class="form-control" />
+                <span asp-validation-for="Buttontext" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>

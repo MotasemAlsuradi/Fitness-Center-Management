@@ -1,0 +1,114 @@
+﻿@model Fitness_Center_Management.Models.Maininformationoffitnesscenter
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Maininformationoffitnesscenter</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Firstabouttext)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Firstabouttext)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Secoundabouttext)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Secoundabouttext)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Thirdabouttext)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Thirdabouttext)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Openday)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Openday)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Closedday)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Closedday)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Worktime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Worktime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Testamoinaltext)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Testamoinaltext)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Welcomelocationtext)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Welcomelocationtext)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Locationtext)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Locationtext)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Locationsource)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Locationsource)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Copyrighttext)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Copyrighttext)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Maininformationoffitnesscenterid" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
+</body>
+</html>

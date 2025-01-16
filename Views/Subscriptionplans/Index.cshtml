@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Fitness_Center_Management.Models.Subscriptionplan>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripelineone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripelinetwo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripelinethree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripelinefour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripelinefive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripelinesix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripelineseven)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripelineeghit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripelinenine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Advicetext)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Buttontext)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripelineone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripelinetwo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripelinethree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripelinefour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripelinefive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripelinesix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripelineseven)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripelineeghit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripelinenine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Advicetext)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Buttontext)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Planid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Planid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Planid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,203 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Landing-Section -->
+<section class="landing text-light d-flex justify-content-center align-items-center">
+    <div class="text-center">
+        <p class="fs-5 text-secondary m-0">New Way To Build A Healthy LifeStyle!</p>
+        <h1 class="mb-4">Upgrade Your Body At FitSphere Fitness</h1>
+        <a class="getStarted text-decoration-none p-3" asp-area="" asp-controller="Home" asp-action="Subscriptions">Get Started</a>
+        <a class="learnMore text-decoration-none p-3" asp-area="" asp-controller="Home" asp-action="About">Learn More</a>
+    </div>
+</section>
+
+<!-- Features-Section -->
+<section id="features" class="features text-light text-center d-flex align-items-center justify-content-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mb-4">
+                <h2 class="mb-3">New To FitSphere?</h2>
+                <h6 class="mb-3">Your Membership Is Up To 2 Months FREE ($62.50 Per Month)</h6>
+                <p class="text-secondary">
+                    FitSphere is here to make you feel even better—empowering your fitness journey with unmatched
+                    support and motivation!
+                </p>
+            </div>
+            <div class="col-lg-1 line"></div>
+            <div class="col-lg-5 col-md-12 mb-4">
+                <div class="working-hours">
+                    <h2 class="mb-3">Working Hours</h2>
+                    <p class="m-0"><strong class="d-block">Saturday - Thursday:</strong></p>
+                    <p class="mb-3 small">7:00 AM - 10:00 PM</p>
+                    <p class="m-0"><strong>Friday:</strong> Closed</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <a class="btn" asp-area="" asp-controller="Home" asp-action="Subscriptions">Become A Member Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial-Section -->
+<section id="testimonials" class="testimonials text-light">
+    <div class="container">
+        <h2 class="text-center mb-4">What Our Members Say</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- Carousel Items -->
+            <div class="carousel-inner">
+                <!-- Testimonial 1 -->
+                <div class="carousel-item active">
+                    <div class="row align-items-center">
+                        <!-- Testimonial Text -->
+                        <div class="col-md-8 text-start">
+                            <p class="fs-4 mb-3">
+                                "Joining FitSphere was the best decision ever! I've never felt
+                                healthier and stronger."
+                            </p>
+                        </div>
+                        <!-- Person's Card -->
+                        <div class="col-md-4 text-center">
+                            <img src="images/main-bg.jpeg" class="rounded-circle mb-2" alt="Person 1"
+                                 style="width: 100px; height: 100px;">
+                            <h6 class="mb-0">John D.</h6>
+                            <p class="small">Member since 2021</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="carousel-item">
+                    <div class="row align-items-center">
+                        <!-- Testimonial Text -->
+                        <div class="col-md-8 text-start">
+                            <p class="fs-4 mb-3">"The trainers are amazing, and the facilities are top-notch!"</p>
+                        </div>
+                        <!-- Person's Card -->
+                        <div class="col-md-4 text-center">
+                            <img src="images/main-bg.jpeg" class="rounded-circle mb-2" alt="Person 2"
+                                 style="width: 100px; height: 100px;">
+                            <h6 class="mb-0">Mune W.</h6>
+                            <p class="small">Member since 2022</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="carousel-item">
+                    <div class="row align-items-center">
+                        <!-- Testimonial Text -->
+                        <div class="col-md-8 text-start">
+                            <p class="fs-4 mb-3">"The trainers are amazing, and the facilities are top-notch!"</p>
+                        </div>
+                        <!-- Person's Card -->
+                        <div class="col-md-4 text-center">
+                            <img src="images/main-bg.jpeg" class="rounded-circle mb-2" alt="Person 2"
+                                 style="width: 100px; height: 100px;">
+                            <h6 class="mb-0">Sarah W.</h6>
+                            <p class="small">Member since 2020</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Carousel Controls (Below) -->
+                <div class="carousel-controls text-center">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                            data-bs-slide="prev" aria-label="Previous">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                            data-bs-slide="next" aria-label="Next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section id="blog" class="blog bg-secondary-subtle py-5">
+    <div class="container">
+        <h2 class="text-center text-dark mb-5">Fitness Tips & Articles</h2>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card bg-dark text-white p-3 my-1">
+                    <div class="card-body">
+                        <h5 class="card-title">Set Clear and Achievable Goals</h5>
+                        <p class="card-text text-secondary">Breaking your larger fitness goals into smaller, achievable steps is a great way to stay motivated. Whether it's losing a certain amount of weight, improving your endurance, or mastering a new exercise, having specific goals helps measure progress and keeps you focused.</p>
+                        <p class="card-text text-secondary">Take it step by step and celebrate small victories along the way. Remember, consistency is key to long-term success!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card bg-dark text-white p-3 my-1">
+                    <div class="card-body">
+                        <h5 class="card-title">Create a Routine</h5>
+                        <p class="card-text text-secondary">Having a consistent routine is one of the most important parts of staying on track with fitness. Find a time that works best for you, whether in the morning or evening, and stick to it. This helps turn exercise into a habit, making it easier to prioritize.</p>
+                        <p class="card-text text-secondary">Make sure your routine is varied and includes a mix of cardio, strength training, and flexibility work to keep things interesting.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card bg-dark text-white p-3 my-1">
+                    <div class="card-body">
+                        <h5 class="card-title">Track Your Progress</h5>
+                        <p class="card-text text-secondary">Tracking your workouts, whether by using a fitness app or a simple notebook, allows you to see your progress over time. It helps you stay focused and motivated as you see improvements in strength, endurance, or other fitness goals.</p>
+                        <p class="card-text text-secondary">Remember to track all types of workouts, including cardio, weightlifting, and flexibility exercises. This will give you a well-rounded picture of your fitness journey.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact & Location - Section -->
+<section id="contact" class="contact text-light py-5">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6">
+                <h2 class="text-center my-4">Feel Free To Ask Any Question</h2>
+                <form action="#" method="POST">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+
+            <div class="col-md-6 line">
+                <div class="row">
+                    <h2 class="text-center my-4">We Are Wating You</h2>
+                    <div class="mb-3">
+                        <h4>
+                            <i class="fa-solid fa-location-dot"></i>
+                            35 Al-Madina Al-Monawara Street, Amman - Capital Governorate, Jordan
+                        </h4>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d27096.116529027047!2d35.90389759999999!3d31.906201599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sjo!4v1736306420789!5m2!1sen!2sjo"
+                            width="600" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
