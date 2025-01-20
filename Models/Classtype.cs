@@ -11,9 +11,9 @@ public partial class Classtype
 
     public string? Dayofweek { get; set; }
 
-    public DateTime Starttime { get; set; }
-
-    public DateTime Endtime { get; set; }
+    public DateTime? Starttime { get; set; }
+    
+    public DateTime? Endtime { get; set; }
 
     public string? Classdescription { get; set; }
 

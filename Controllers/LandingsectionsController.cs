@@ -71,6 +71,7 @@ namespace Fitness_Center_Management.Controllers
 
                     _context.Update(landingsection);
                     await _context.SaveChangesAsync();
+                 
                 }
                 catch (DbUpdateConcurrencyException)
                 {

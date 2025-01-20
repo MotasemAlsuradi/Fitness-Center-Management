@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Fitness_Center_Management.Models;
 using Microsoft.AspNetCore.Hosting;
+using Fitness_Center_Management.Services;
 
 namespace Fitness_Center_Management.Controllers
 {
@@ -14,20 +15,21 @@ namespace Fitness_Center_Management.Controllers
     {
         private readonly ModelContext _context;
         private readonly IWebHostEnvironment _webHostEnviroment;
+        public readonly IPagesViewService _pagesViewService;
 
-
-        public AdminsController(ModelContext context, IWebHostEnvironment webHostEnviroment)
+        public AdminsController(ModelContext context, IWebHostEnvironment webHostEnviroment, IPagesViewService pagesViewService)
         {
             _context = context;
             _webHostEnviroment = webHostEnviroment;
+            _pagesViewService = pagesViewService;
         }
 
         // GET: Admins
         public async Task<IActionResult> Index()
         {
-              return _context.Admins != null ? 
-                          View(await _context.Admins.ToListAsync()) :
-                          Problem("Entity set 'ModelContext.Admins'  is null.");
+            return _context.Admins != null ?
+                View(await _context.Admins.ToListAsync()) :
+                Problem("Entity set 'ModelContext.Admins' is null.");
         }
 
         // GET: Admins/Details/5

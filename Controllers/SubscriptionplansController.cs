@@ -6,22 +6,28 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Fitness_Center_Management.Models;
+using Microsoft.AspNetCore.Hosting;
+
+// Changed To Classes
 
 namespace Fitness_Center_Management.Controllers
 {
     public class SubscriptionplansController : Controller
     {
         private readonly ModelContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public SubscriptionplansController(ModelContext context)
+        public SubscriptionplansController(ModelContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment=webHostEnvironment;
         }
 
         // GET: Subscriptionplans
         public async Task<IActionResult> Index()
         {
-              return _context.Subscriptionplans != null ? 
+            ViewData["TrainerId"] = HttpContext.Session.GetInt32("trainerId");
+            return _context.Subscriptionplans != null ? 
                           View(await _context.Subscriptionplans.ToListAsync()) :
                           Problem("Entity set 'ModelContext.Subscriptionplans'  is null.");
         }
@@ -47,6 +53,7 @@ namespace Fitness_Center_Management.Controllers
         // GET: Subscriptionplans/Create
         public IActionResult Create()
         {
+            ViewData["TrainerId"] = HttpContext.Session.GetInt32("trainerId");
             return View();
         }
 
@@ -55,10 +62,24 @@ namespace Fitness_Center_Management.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Planid,Name,Price,Descripelineone,Descripelinetwo,Descripelinethree,Descripelinefour,Descripelinefive,Descripelinesix,Descripelineseven,Descripelineeghit,Descripelinenine,Advicetext,Buttontext")] Subscriptionplan subscriptionplan)
+        public async Task<IActionResult> Create([Bind("Planid,Name,Price,Descripelineone,Descripelinetwo,Descripelinethree,Descripelinefour,ImageFile,Advicetext,Buttontext")] Subscriptionplan subscriptionplan)
         {
             if (ModelState.IsValid)
             {
+                if (subscriptionplan.ImageFile != null)
+                {
+                    string wwwRootPath = _webHostEnvironment.WebRootPath;
+                    string fileName = Guid.NewGuid().ToString() + "_" + subscriptionplan.ImageFile.FileName;
+                    string path = Path.Combine(wwwRootPath + "/Images/", fileName);
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await subscriptionplan.ImageFile.CopyToAsync(fileStream);
+                    }
+
+                    subscriptionplan.Descripelinefive = fileName;
+
+                }
+
                 _context.Add(subscriptionplan);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -87,7 +108,7 @@ namespace Fitness_Center_Management.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("Planid,Name,Price,Descripelineone,Descripelinetwo,Descripelinethree,Descripelinefour,Descripelinefive,Descripelinesix,Descripelineseven,Descripelineeghit,Descripelinenine,Advicetext,Buttontext")] Subscriptionplan subscriptionplan)
+        public async Task<IActionResult> Edit(decimal id, [Bind("Planid,Name,Price,Descripelineone,Descripelinetwo,Descripelinethree,Descripelinefou,ImageFile,Advicetext,Buttontext")] Subscriptionplan subscriptionplan)
         {
             if (id != subscriptionplan.Planid)
             {
@@ -98,6 +119,20 @@ namespace Fitness_Center_Management.Controllers
             {
                 try
                 {
+                    if (subscriptionplan.ImageFile != null)
+                    {
+                        string wwwRootPath = _webHostEnvironment.WebRootPath;
+                        string fileName = Guid.NewGuid().ToString() + "_" + subscriptionplan.ImageFile.FileName;
+                        string path = Path.Combine(wwwRootPath + "/Images/", fileName);
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await subscriptionplan.ImageFile.CopyToAsync(fileStream);
+                        }
+
+                        subscriptionplan.Descripelinefive = fileName;
+
+                    }
+
                     _context.Update(subscriptionplan);
                     await _context.SaveChangesAsync();
                 }

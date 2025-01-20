@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Fitness_Center_Management.Models.Subscriptionplan>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_TrainerLayout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -25,39 +25,26 @@
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripelineone)
+                Day                 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripelinetwo)
+                Start Time
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripelinethree)
-            </th>
+                End Time
+             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripelinefour)
-            </th>
+                Goals
+             </th>
+             <th>
+                 Image
+             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripelinefive)
-            </th>
+                Exercise routines
+             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripelinesix)
+                Trainer Created
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripelineseven)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripelineeghit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripelinenine)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Advicetext)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Buttontext)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -82,19 +69,8 @@
                 @Html.DisplayFor(modelItem => item.Descripelinefour)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Descripelinefive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripelinesix)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripelineseven)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripelineeghit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripelinenine)
+                <img src=@Url.Content("~/Images/" + item.Descripelinefive)
+                    asp-append-version="true" style="border-radius:20%;" width="100" height="100" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Advicetext)
@@ -103,9 +79,7 @@
                 @Html.DisplayFor(modelItem => item.Buttontext)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Planid">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Planid">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Planid">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Planid">Edit</a>
             </td>
         </tr>
 }

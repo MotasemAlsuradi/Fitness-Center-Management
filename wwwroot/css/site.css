@@ -183,7 +183,7 @@ footer,
 /* Start Landing */
 .landing {
     min-height: calc(100vh - 56px);
-    background-image: url(../images/main-bg-1.jpeg);
+    background-image: url(../Images/15fcc959-622c-4d51-8887-5f50afcf1c4b_main-bg-1.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -367,71 +367,103 @@ footer {
     }
 /*---------------------------------- End-About-Page-Style ----------------------------------*/
 
-/*------------------------------ Start-Subscriptions-Page-Style -----------------------------*/
-.plan-card {
-    background-color: var(--dark-color);
-    color: var(--white-color);
-    border: 2px solid var(--primary-color);
-    border-radius: 8px;
-    padding: 20px;
-    /* Initial styles */
-    transform: translateY(75px);
-    opacity: 0;
-    /* Animation */
-    animation: fadeInUp 0.6s ease-in forwards;
-    animation-delay: 0.1s;
-    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+/*------------------------------ Start-Subscriptions-Page-Style (Changed To Classes) -----------------------------*/
+#subscriptions {
+    background-color: #f8f9fa;
+    padding: 50px 0; 
 }
 
-    .plan-card:hover {
-        cursor: pointer;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+    #subscriptions h6 {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #6c757d; 
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(100px) scale(0);
+    #subscriptions h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #343a40; 
+        margin-bottom: 30px;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.plan-card .price {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.plan-card ul {
-    list-style: none;
-    padding: 0;
-}
-
-    .plan-card ul li {
-        padding: 8px 0;
-        border-bottom: 1px solid #ddd;
+    #subscriptions .class-thumb {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-        .plan-card ul li:last-child {
-            border-bottom: none;
+        #subscriptions .class-thumb img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
         }
 
-.btn-subscribe {
-    padding: 10px 20px;
-    font-weight: 600;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-}
+        #subscriptions .class-thumb:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
 
-    .btn-subscribe:focus,
-    .btn-subscribe:hover {
-        color: var(--white-color);
-        background-color: rgb(77, 45, 230);
+            #subscriptions .class-thumb:hover img {
+                transform: scale(1.1); /* Slight zoom on hover */
+            }
+
+    #subscriptions .class-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff; 
+        padding: 20px;
+        text-align: center;
+        transform: translateY(75%);
+        transition: transform 0.3s ease;
     }
+
+    #subscriptions .class-thumb:hover .class-info {
+        transform: translateY(0); /* Slide in on hover */
+    }
+
+    #subscriptions .class-info h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    #subscriptions .class-info span {
+        display: block;
+        font-size: 0.9rem;
+        margin-top: 5px;
+        color: #ffd700; /* Gold for price and trainer */
+    }
+
+        #subscriptions .class-info span.class-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #28a745; /* Green for price */
+        }
+
+    #subscriptions .class-info p {
+        font-size: 0.9rem;
+        margin-top: 10px;
+        line-height: 1.5;
+        color: #f8f9fa;
+    }
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    #subscriptions h2 {
+        font-size: 2rem;
+    }
+
+    #subscriptions .class-thumb {
+        margin-bottom: 30px;
+    }
+}
 
 /*------------------------------ End-Subscriptions-Page-Style -------------------------------*/
 

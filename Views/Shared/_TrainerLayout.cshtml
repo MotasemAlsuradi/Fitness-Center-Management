@@ -1,0 +1,128 @@
+﻿@using NuGet.DependencyResolver
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Trainer</title> <!-- plugins:css -->
+    <link rel="stylesheet" href="~/AdminAssets/vendors/feather/feather.css">
+    <link rel="stylesheet" href="~/AdminAssets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/AdminAssets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/AdminAssets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/AdminAssets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="~/AdminAssets/js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/AdminAssets/css/vertical-layout-light/style.css">
+    <!-- endinject
+    <link rel="shortcut icon" href="~/AdminAssets/images/favicon.png" />
+    -->
+</head>
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo mx-auto" asp-controller="TrainerController1" asp-action="Index">
+                    TRAINER-DASH
+                </a>
+            </div>
+
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="icon-menu"></span>
+                </button>
+
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                            @await Component.InvokeAsync("TrainerController1Component")
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                            <a asp-controller="Trainers" asp-action="Details" asp-route-id="@ViewData["trainerId"]" class="dropdown-item">
+                                <i class="ti-user text-primary"></i>
+                                Profile
+                            </a>
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="dropdown-item">
+                                <i class="ti-power-off text-primary"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="icon-menu"></span>
+                </button>
+
+            </div>
+        </nav>
+        
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="TrainerController1" asp-action="Index">
+                            <i class="icon-grid-2 menu-icon"></i>
+                            <span class="menu-title">DASHBOARD</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Trainers" asp-action="Details"
+                           asp-route-id="@ViewData["trainerId"]">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">PROFILE</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Trainers" asp-action="Members">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">MEMBERS</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Subscriptionplans" asp-action="Index">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">CLASSES</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!--End nav sideBar-->
+
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- plugins:js -->
+    <!-- تحميل jQuery أولا -->
+    <!-- تحميل ملفات DataTables بعد jQuery -->
+    <script src="~/AdminAssets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/AdminAssets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="~/AdminAssets/js/dataTables.select.min.js"></script>
+    <script src="~/AdminAssets/vendors/js/vendor.bundle.base.js"></script>
+
+    <!-- باقي الملفات -->
+    <script src="~/AdminAssets/vendors/chart.js/Chart.min.js"></script>
+    <script src="~/AdminAssets/js/off-canvas.js"></script>
+    <script src="~/AdminAssets/js/hoverable-collapse.js"></script>
+    <script src="~/AdminAssets/js/template.js"></script>
+    <script src="~/AdminAssets/js/settings.js"></script>
+    <script src="~/AdminAssets/js/todolist.js"></script>
+    <script src="~/AdminAssets/js/dashboard.js"></script>
+    <script src="~/AdminAssets/js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+    <!-- DataTables Initialization -->
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
+

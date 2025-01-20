@@ -67,7 +67,7 @@
     <div class="container">
         <div class="text-center">
             <a  asp-action="Index" style="text-decoration: none;">
-                <h1 style="background-color: none;">Our Trainers</h1>
+                <h1 style="background-color: none;">Trainers</h1>
             </a>
         </div>
 
@@ -105,8 +105,6 @@
                             </p>
                         </div>
                         <div class="trainer-actions">
-                            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Trainersid">Edit</a>
-                            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Trainersid">Details</a>
                             <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Trainersid">Delete</a>
                         </div>
                     </div>

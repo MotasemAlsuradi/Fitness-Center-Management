@@ -79,6 +79,15 @@ namespace Fitness_Center_Management.Controllers
             return View(trainer);
         }
 
+        // GET: Ttainers/Members
+        public async Task<IActionResult> Members()
+        {
+            ViewData["TrainerId"] = HttpContext.Session.GetInt32("trainerId");
+            return _context.Users != null ?
+                          View(await _context.Users.ToListAsync()) :
+                          Problem("Entity set 'ModelContext.Users'  is null.");
+        }
+
         // GET: Trainers/Create
         public IActionResult Create()
         {
@@ -125,6 +134,7 @@ namespace Fitness_Center_Management.Controllers
         // GET: Trainers/Edit/2
         public async Task<IActionResult> Edit(decimal? id)
         {
+            ViewData["TrainerId"] = HttpContext.Session.GetInt32("trainerId");
             if (id == null || _context.Trainers == null)
             {
                 return NotFound();
@@ -203,7 +213,7 @@ namespace Fitness_Center_Management.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new {id});
             }
 
             return View(trainer);

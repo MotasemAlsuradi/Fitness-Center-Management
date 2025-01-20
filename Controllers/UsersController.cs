@@ -85,8 +85,6 @@ namespace Fitness_Center_Management.Controllers
         }
 
         // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Userid,Firstname,Lastname,Email,Phonenumber,Age,Gender,Picture,Username,Password,Registrationdate")] User user)
@@ -169,7 +167,7 @@ namespace Fitness_Center_Management.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             return View(user);
         }

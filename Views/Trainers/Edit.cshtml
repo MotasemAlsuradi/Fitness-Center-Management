@@ -1,7 +1,7 @@
 ﻿@model Fitness_Center_Management.Models.Trainer
 
 @{
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+   Layout = "~/Views/Shared/_TrainerLayout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -73,7 +73,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Details" asp-route-id="@ViewData["trainerId"]">Back</a>
 </div>
 
 </body>

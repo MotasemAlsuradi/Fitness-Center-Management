@@ -1,40 +1,25 @@
-﻿@{
+﻿@model PagesViewModel
+
+@{
     ViewData["Title"] = "About";
 }
 
 <!-- About-Section -->
 <section id="about" class="about-section bg-secondary-subtle py-5">
     <div class="container rounded">
-        <h1 class="mb-4 fw-bold">FitSphere Fitness</h1>
+        <h1 class="mb-4 fw-bold">@Model.Maininformationoffitnesscenter.Name</h1>
         <p class="text-black fw-medium">
-            At FitSphere Fitness, we are dedicated to helping you achieve your health and fitness goals.
-            Our state-of-the-art facilities, passionate trainers, and supportive community make us the
-            perfect partner in your fitness journey. Whether you’re just starting or looking to reach
-            new levels, we’ve got you covered.
-
+            @Model.Maininformationoffitnesscenter.Firstabouttext
             <br><br>
-
-            We believe in a holistic approach to fitness that includes physical strength, mental resilience,
-            and a healthy lifestyle. Our diverse programs cater to all fitness levels, from beginner
-            workout sessions to advanced training for seasoned athletes. Each class is carefully designed
-            to keep you motivated and challenged, so you’ll never feel like your fitness routine is stagnant.
-
+            @Model.Maininformationoffitnesscenter.Secoundabouttext
             <br><br>
-
-            Our team of certified trainers has extensive experience in various disciplines, including
-            weight training, cardio fitness, yoga, and wellness coaching. They are not just experts in their
-            field but are also genuinely passionate about helping you unlock your full potential. You can
-            expect personalized guidance and tailored programs that align with your fitness goals.
-
+            @Model.Maininformationoffitnesscenter.Thirdabouttext
             <br><br>
-
             At FitSphere, we also value community. Our members are part of a supportive and encouraging
             network that fosters growth, teamwork, and friendship. Whether you're working out solo or attending
             one of our group fitness classes, you’ll feel the energy and camaraderie that makes us different from
             any other gym.
-
             <br><br>
-
             We're here to empower you—no matter your age, background, or fitness level. Join us today
             and experience the FitSphere difference. Together, we'll work towards a healthier, stronger,
             and more confident version of you.
@@ -47,66 +32,27 @@
     <div class="container">
         <h2 class="text-center mb-4">Meet Our Trainers</h2>
         <div class="row text-center">
-            <!-- Trainer 1 -->
+        @foreach(var trainer in Model.Trainers){
+            <!-- Trainer -->
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card trainer-card border-0">
-                    <img src="images/gym-1.jpeg" class="card-img-top trainer-img" alt="Trainer 1">
+                    <img src="@Url.Content("~/Images/" + trainer.Picture)" class="card-img-top trainer-img" alt="Trainer Picture">
                     <div class="card-body text-bg-dark p-4">
                         <div class="d-flex justify-content-between align-items-start">
                             <div class="trainer-info text-start">
-                                <h5 class="card-title">John Doe</h5>
-                                <p class="card-text">Specializes in weightlifting and strength training.</p>
+                                <h5 class="card-title">@trainer.Firstname @trainer.Lastname</h5>
+                                <p class="card-text">@trainer.Expertise</p>
                             </div>
                             <div class="social-icons">
-                                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="@trainer.Socialfacebook" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
+                                <a href="@trainer.Sociallinkedin" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                <a href="@trainer.Socialtwitter"  target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Trainer 2 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card trainer-card border-0">
-                    <img src="images/gym-2.jpeg" class="card-img-top trainer-img" alt="Trainer 2">
-                    <div class="card-body text-bg-dark p-4">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div class="trainer-info text-start">
-                                <h5 class="card-title">Jane Smith</h5>
-                                <p class="card-text">Expert in yoga and mindfulness practices.</p>
-                            </div>
-                            <div class="social-icons">
-                                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Trainer 3 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card trainer-card border-0 text-center">
-                    <img src="images/gym-3.jpeg" class="card-img-top trainer-img" alt="Trainer 3">
-                    <div class="card-body text-bg-dark p-4">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div class="trainer-info text-start">
-                                <h5 class="card-title">Mike Johnson</h5>
-                                <p class="card-text">Professional cardio trainer and endurance coach.</p>
-                            </div>
-                            <div class="social-icons">
-                                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        }
         </div>
     </div>
 </section>

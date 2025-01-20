@@ -1,5 +1,7 @@
 ﻿using Fitness_Center_Management.Models;
+using Fitness_Center_Management.Services;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -11,37 +13,56 @@ namespace Fitness_Center_Management.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ModelContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        public readonly IPagesViewService _pagesViewService;
 
-        public HomeController(ILogger<HomeController> logger, ModelContext context, IWebHostEnvironment webHostEnvironment)
+        private PagesViewModel GetPagesViewModel()
+        {
+            return _pagesViewService.GetPagesViewModel();
+        }
+
+        public HomeController(ILogger<HomeController> logger, ModelContext context, IWebHostEnvironment webHostEnvironment, IPagesViewService pagesViewService)
         {
             _logger = logger;
             _context = context;
             _webHostEnvironment = webHostEnvironment;
+            _pagesViewService = pagesViewService;
         }
-
+        
         public IActionResult Index()
         {
-            return View();
+            ViewData["userId"] = HttpContext.Session.GetInt32("userId");
+            ViewBag.UserPic = HttpContext.Session.GetString("userPic");
+            ViewBag.UserFullName = HttpContext.Session.GetString("userFullName");
+            return View(GetPagesViewModel());
         }
 
         public IActionResult About()
         {
-            return View();
+            ViewData["userId"] = HttpContext.Session.GetInt32("userId");
+            ViewBag.UserPic = HttpContext.Session.GetString("userPic");
+            ViewBag.UserFullName = HttpContext.Session.GetString("userFullName");
+            return View(GetPagesViewModel());
         }
 
-        public IActionResult Subscriptions()
+        public IActionResult Classes()
         {
-            return View();
+            ViewData["userId"] = HttpContext.Session.GetInt32("userId");
+            ViewBag.UserPic = HttpContext.Session.GetString("userPic");
+            ViewBag.UserFullName = HttpContext.Session.GetString("userFullName");
+            return View(GetPagesViewModel());
         }
 
         public IActionResult Schedules()
         {
-            return View();
+            ViewData["userId"] = HttpContext.Session.GetInt32("userId");
+            ViewBag.UserPic = HttpContext.Session.GetString("userPic");
+            ViewBag.UserFullName = HttpContext.Session.GetString("userFullName");
+            return View(GetPagesViewModel());
         }
 
         public IActionResult Login()
         {
-            return View();
+            return View(GetPagesViewModel());
         }
 
         [HttpPost]
@@ -63,7 +84,42 @@ namespace Fitness_Center_Management.Controllers
                 switch (auth.Roleid)
                 {
                     case 1:
+                        var adminFullName = _context.Admins
+                            .Select(admin => new { admin.Firstname, admin.Lastname })
+                            .FirstOrDefault();
+
+                        if (adminFullName != null)
+                        {
+                            HttpContext.Session.SetString("adminFullName", $"{adminFullName.Firstname} {adminFullName.Lastname}");
+                        }
                         return RedirectToAction("Index", "AdminController1");
+                    
+                    case 2:
+						var trainer = _context.Trainers
+					        .Where(t => t.Username.ToLower() == userLogin.Username.ToLower())
+					        .SingleOrDefault();
+
+						if (trainer != null)
+                        {
+                            HttpContext.Session.SetInt32("trainerId", Convert.ToInt32(trainer.Trainersid));
+							HttpContext.Session.SetString("trainerFullName", $"{trainer.Firstname} {trainer.Lastname}");
+						}
+
+						return RedirectToAction("Index", "TrainerController1");
+
+                    case 3:
+                        var user = _context.Users
+                            .Where(u => u.Username.ToLower() == userLogin.Username.ToLower())
+                            .SingleOrDefault();
+
+                        if (user != null)
+                        {
+                            HttpContext.Session.SetInt32("userId", Convert.ToInt32(user.Userid));
+                            HttpContext.Session.SetString("userFullName", $"{user.Firstname} {user.Lastname}");
+                            HttpContext.Session.SetString("userPic", user.Picture);
+                        }
+
+                        return RedirectToAction("Index", "Home");
                 }
             }
 
@@ -73,52 +129,35 @@ namespace Fitness_Center_Management.Controllers
 
         public IActionResult Logout()
         {
+            HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
 
-        public IActionResult Register()
-        {
-            return View(); 
-        }
+        //public IActionResult MemberProfile() 
+        //{
+        //    ViewData["userId"] = HttpContext.Session.GetInt32("userId");
+        //    ViewBag.UserPic = HttpContext.Session.GetString("userPic");
+        //    ViewBag.UserFullName = HttpContext.Session.GetString("userFullName");
+        //    return View();
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegisterAsync([Bind("Userid,Firstname,Lastname,Email,Phonenumber,Age,Gender,PictureUrl,Username,Password,Registrationdate")] User user)
+        public async Task<IActionResult> SubmitMessage(string name, string email, string message)
         {
-            if (ModelState.IsValid)
-            {
-                if (user.PictureUrl != null)
-                {
-                    string wwwRootPath = _webHostEnvironment.WebRootPath;
-                    string fileName = Guid.NewGuid().ToString() + "_" + user.PictureUrl.FileName;
-                    string path = Path.Combine(wwwRootPath + "/Images/", fileName);
-                    using (var fileStream = new FileStream(path, FileMode.Create))
-                    {
-                        await user.PictureUrl.CopyToAsync(fileStream);
-                    }
-
-                    user.Picture = fileName;
-                }
-
-                _context.Add(user);
-
-                Userlogin userlogin = new Userlogin
-                {
-                    Roleid = 3,
-                    Username = user.Username,
-                    Password = user.Password
-                };
-
-                _context.Add(userlogin);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction(nameof(Login));
-            }
-
-            return View(user);
+            Contactform contactform = new Contactform()
+            { 
+                Name = name,
+                Email = email,
+                Message = message
+            };
             
-        }
+            _context.Add(contactform);
+            await _context.SaveChangesAsync();
 
+            TempData["MessageSuccess"] = "Your message has been successfully sent. We will contact you shortly.";
+            return RedirectToAction("Index");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

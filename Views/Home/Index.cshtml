@@ -1,14 +1,52 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model PagesViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+@if (TempData["MessageSuccess"] != null)
+{
+    <style>
+        .toast-success {
+            background-color: #006400 !important;
+        }
+    </style>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        Command: toastr["success"]("@TempData["MessageSuccess"]")
+
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    </script>
 }
 
 <!-- Landing-Section -->
 <section class="landing text-light d-flex justify-content-center align-items-center">
     <div class="text-center">
-        <p class="fs-5 text-secondary m-0">New Way To Build A Healthy LifeStyle!</p>
-        <h1 class="mb-4">Upgrade Your Body At FitSphere Fitness</h1>
-        <a class="getStarted text-decoration-none p-3" asp-area="" asp-controller="Home" asp-action="Subscriptions">Get Started</a>
-        <a class="learnMore text-decoration-none p-3" asp-area="" asp-controller="Home" asp-action="About">Learn More</a>
+        <p class="fs-5 text-secondary m-0">@Model.LandingSection.Firstwelcometext</p>
+        <h1 class="mb-4">@Model.LandingSection.Secoundwelcometext</h1>
+        <a asp-area="" asp-controller="Home" asp-action="Classes" class="getStarted text-decoration-none p-3">
+            @Model.LandingSection.Firstbutton
+        </a>
+        <a asp-area="" asp-controller="Home" asp-action="About" class="learnMore text-decoration-none p-3">
+            @Model.LandingSection.Secoundbutton
+        </a>
     </div>
 </section>
 
@@ -17,26 +55,24 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 mb-4">
-                <h2 class="mb-3">New To FitSphere?</h2>
-                <h6 class="mb-3">Your Membership Is Up To 2 Months FREE ($62.50 Per Month)</h6>
-                <p class="text-secondary">
-                    FitSphere is here to make you feel even better—empowering your fitness journey with unmatched
-                    support and motivation!
-                </p>
+                <h2 class="mb-3">@Model.FeatureSection.Firstlefttext</h2>
+                <h6 class="mb-3">@Model.FeatureSection.Secoundlefttext</h6>
+                <p class="text-secondary">@Model.FeatureSection.Thirdlefttext</p>
             </div>
             <div class="col-lg-1 line"></div>
             <div class="col-lg-5 col-md-12 mb-4">
+                <!-- From Main  -->
                 <div class="working-hours">
                     <h2 class="mb-3">Working Hours</h2>
-                    <p class="m-0"><strong class="d-block">Saturday - Thursday:</strong></p>
-                    <p class="mb-3 small">7:00 AM - 10:00 PM</p>
-                    <p class="m-0"><strong>Friday:</strong> Closed</p>
+                    <p class="m-0"><strong class="d-block">@Model.Maininformationoffitnesscenter.Openday</strong></p>
+                    <p class="mb-3 small">@Model.Maininformationoffitnesscenter.Worktime</p>
+                    <p class="m-0"><strong>@Model.Maininformationoffitnesscenter.Closedday</strong> Closed</p>
                 </div>
             </div>
         </div>
         <div class="row mt-5">
             <div class="col">
-                <a class="btn" asp-area="" asp-controller="Home" asp-action="Subscriptions">Become A Member Now</a>
+                <a class="btn" asp-area="" asp-controller="Home" asp-action="Classes">@Model.FeatureSection.Button</a>
             </div>
         </div>
     </div>
@@ -45,7 +81,7 @@
 <!-- Testimonial-Section -->
 <section id="testimonials" class="testimonials text-light">
     <div class="container">
-        <h2 class="text-center mb-4">What Our Members Say</h2>
+        <h2 class="text-center mb-4">@Model.Maininformationoffitnesscenter.Testamoinaltext</h2>
         <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
             <!-- Carousel Items -->
             <div class="carousel-inner">
@@ -126,33 +162,18 @@
     <div class="container">
         <h2 class="text-center text-dark mb-5">Fitness Tips & Articles</h2>
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card bg-dark text-white p-3 my-1">
-                    <div class="card-body">
-                        <h5 class="card-title">Set Clear and Achievable Goals</h5>
-                        <p class="card-text text-secondary">Breaking your larger fitness goals into smaller, achievable steps is a great way to stay motivated. Whether it's losing a certain amount of weight, improving your endurance, or mastering a new exercise, having specific goals helps measure progress and keeps you focused.</p>
-                        <p class="card-text text-secondary">Take it step by step and celebrate small victories along the way. Remember, consistency is key to long-term success!</p>
+            @foreach (var blog in Model.BlogSections)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card bg-dark text-white p-3 my-1">
+                        <div class="card-body">
+                            <h5 class="card-title">@blog.Tiptitle</h5>
+                            <p class="card-text text-secondary">@blog.Firsttiptext</p>
+                            <p class="card-text text-secondary">@blog.Secoundtiptext</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card bg-dark text-white p-3 my-1">
-                    <div class="card-body">
-                        <h5 class="card-title">Create a Routine</h5>
-                        <p class="card-text text-secondary">Having a consistent routine is one of the most important parts of staying on track with fitness. Find a time that works best for you, whether in the morning or evening, and stick to it. This helps turn exercise into a habit, making it easier to prioritize.</p>
-                        <p class="card-text text-secondary">Make sure your routine is varied and includes a mix of cardio, strength training, and flexibility work to keep things interesting.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card bg-dark text-white p-3 my-1">
-                    <div class="card-body">
-                        <h5 class="card-title">Track Your Progress</h5>
-                        <p class="card-text text-secondary">Tracking your workouts, whether by using a fitness app or a simple notebook, allows you to see your progress over time. It helps you stay focused and motivated as you see improvements in strength, endurance, or other fitness goals.</p>
-                        <p class="card-text text-secondary">Remember to track all types of workouts, including cardio, weightlifting, and flexibility exercises. This will give you a well-rounded picture of your fitness journey.</p>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
@@ -164,7 +185,7 @@
 
             <div class="col-md-6">
                 <h2 class="text-center my-4">Feel Free To Ask Any Question</h2>
-                <form action="#" method="POST">
+                <form asp-action="SubmitMessage" method="post">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="name" name="name" required>
@@ -175,24 +196,24 @@
                     </div>
                     <div class="mb-3">
                         <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                    </div>
+                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div> 
                     <button type="submit" class="btn">Send Message</button>
                 </form>
             </div>
 
             <div class="col-md-6 line">
                 <div class="row">
-                    <h2 class="text-center my-4">We Are Wating You</h2>
+                    <h2 class="text-center my-4">@Model.Maininformationoffitnesscenter.Welcomelocationtext</h2>
                     <div class="mb-3">
                         <h4>
                             <i class="fa-solid fa-location-dot"></i>
-                            35 Al-Madina Al-Monawara Street, Amman - Capital Governorate, Jordan
+                            @Model.Maininformationoffitnesscenter.Locationtext
                         </h4>
                     </div>
                 </div>
                 <div class="row mt-4">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d27096.116529027047!2d35.90389759999999!3d31.906201599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sjo!4v1736306420789!5m2!1sen!2sjo"
+                    <iframe src="@Url.Content(Model.Maininformationoffitnesscenter.Locationsource)"
                             width="600" height="150" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
